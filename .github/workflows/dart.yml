@@ -1,0 +1,27 @@
+name: Deploy Flutter Web
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v3
+      - uses: subosito/flutter-action@v2
+
+      - run: flutter pub get
+      - run: flutter build web
+
+      - run: |
+          git config --global user.name "github-actions"
+          git config --global user.email "github-actions@github.com"
+          git clone https://github.com/your-username/flutter-web-app.git --branch gh-pages gh-pages
+          cp -r build/web/* gh-pages/
+          cd gh-pages
+          git add .
+          git commit -m "Deploy"
+          git push
