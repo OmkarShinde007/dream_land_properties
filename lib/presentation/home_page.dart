@@ -2631,7 +2631,9 @@ class _MapSection extends StatelessWidget {
           crossAxisAlignment: CrossAxisAlignment.start,
           children: <Widget>[
             const _MiniEyebrow(text: 'Location Map'),
+
             const SizedBox(height: 12),
+
             Text(
               'Office location with address guidance and nearby references.',
               style: Theme.of(context).textTheme.headlineSmall?.copyWith(
